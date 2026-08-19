@@ -1,0 +1,12 @@
+# 로컬 개발용 - docker-compose로 띄운 PostgreSQL 사용 (docker compose up -d)
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/falette
+    username: falette
+    password: falette
+  jpa:
+    show-sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
