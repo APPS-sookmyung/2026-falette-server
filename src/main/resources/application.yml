@@ -10,6 +10,21 @@ spring:
     properties:
       hibernate:
         format_sql: true
+        jdbc:
+          time_zone: UTC   # created_at(TIMESTAMPTZ)은 UTC로 저장, 날짜 구분은 코드에서 Asia/Seoul로 변환
 
 server:
   port: 8080
+  servlet:
+    session:
+      timeout: 14d
+      cookie:
+        http-only: true
+
+# 프론트 연동 설정 (AppProperties)
+app:
+  cors-allowed-origins:
+    - http://localhost:5173
+    - http://localhost:3000
+  login-success-redirect-url: http://localhost:5173/
+  login-failure-redirect-url: http://localhost:5173/?loginError=true

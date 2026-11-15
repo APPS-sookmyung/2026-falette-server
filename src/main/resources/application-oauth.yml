@@ -1,0 +1,12 @@
+# 구글 로그인을 로컬에서 테스트할 때만 켜는 프로필
+# 실행: SPRING_PROFILES_ACTIVE=local,oauth + 환경 변수 GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET
+# (실제 값은 레포에 커밋 금지)
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope: profile, email
