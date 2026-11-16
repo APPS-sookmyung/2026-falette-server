@@ -34,9 +34,9 @@ public record ReadingDetailResponse(
         );
     }
 
-    public record CardResponse(Long cardId, String name, String imageUrl) {
+    public record CardResponse(Long cardId, String name, String imageUrl, String description) {
         public static CardResponse from(TarotCard card) {
-            return new CardResponse(card.getId(), card.getName(), card.getImageUrl());
+            return new CardResponse(card.getId(), card.getName(), card.getImageUrl(), card.getDescription());
         }
     }
 }
