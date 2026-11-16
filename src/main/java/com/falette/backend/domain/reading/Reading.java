@@ -96,4 +96,38 @@ public class Reading extends BaseTimeEntity {
     public boolean isOwnedBy(User user) {
         return this.user.getId().equals(user.getId());
     }
+
+    public static Reading create(User user,
+                                 ConcernType concernType,
+                                 ColorOption color,
+                                 ColorLevel brightnessLevel,
+                                 ColorLevel saturationLevel,
+                                 ColorReason colorReason,
+                                 Long concernOption1Id,
+                                 Long concernOption2Id,
+                                 String question1Answer,
+                                 String question2Answer,
+                                 TarotCard tarotCard,
+                                 String aiSummary,
+                                 String aiInterpretation,
+                                 List<String> aiKeywords,
+                                 String luckyItem) {
+        Reading r = new Reading();
+        r.user = user;
+        r.concernType = concernType;
+        r.color = color;
+        r.brightnessLevel = brightnessLevel;
+        r.saturationLevel = saturationLevel;
+        r.colorReason = colorReason;
+        r.concernOption1Id = concernOption1Id;
+        r.concernOption2Id = concernOption2Id;
+        r.question1Answer = question1Answer;
+        r.question2Answer = question2Answer;
+        r.tarotCard = tarotCard;
+        r.aiSummary = aiSummary;
+        r.aiInterpretation = aiInterpretation;
+        r.aiKeywords = String.join(",", aiKeywords);
+        r.luckyItem = luckyItem;
+        return r;
+    }
 }
