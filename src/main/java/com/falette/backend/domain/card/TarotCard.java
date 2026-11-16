@@ -33,4 +33,15 @@ public class TarotCard {
 
     @Column(length = 255)
     private String keywords;
+
+    public static TarotCard create(String name, String imageUrl, int positivityLevel,
+                                   String description, String keywords) {
+        TarotCard card = new TarotCard();
+        card.name = name;
+        card.imageUrl = imageUrl;
+        card.positivityLevel = positivityLevel;
+        card.description = description;
+        card.keywords = keywords;
+        return card;
+    }
 }
