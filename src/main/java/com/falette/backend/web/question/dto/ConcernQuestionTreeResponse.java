@@ -1,22 +1,20 @@
 package com.falette.backend.web.question.dto;
 
-import com.falette.backend.domain.reading.ConcernType;
-
 import java.util.List;
 
+/** 고민 유형별 질문 트리의 1차 질문 노드. 응답은 이 노드의 배열이다. */
 public record ConcernQuestionTreeResponse(
-        ConcernType concernType,
-        PrimaryQuestion primaryQuestion
+        Long questionId,
+        int questionLevel,
+        String questionText,
+        List<Option> options
 ) {
-    public record PrimaryQuestion(Long id, String questionText, List<PrimaryOption> options) {
+    public record Option(Long optionId, int optionOrder, String optionText, SubQuestion subQuestion) {
     }
 
-    public record PrimaryOption(Long id, String optionText, SecondaryQuestion secondaryQuestion) {
+    public record SubQuestion(Long questionId, int questionLevel, String questionText, List<SubOption> options) {
     }
 
-    public record SecondaryQuestion(Long id, String questionText, List<OptionItem> options) {
-    }
-
-    public record OptionItem(Long id, String optionText) {
+    public record SubOption(Long optionId, int optionOrder, String optionText) {
     }
 }

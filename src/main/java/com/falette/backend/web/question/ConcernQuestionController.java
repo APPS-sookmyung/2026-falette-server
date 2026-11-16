@@ -8,16 +8,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/concerns")
+@RequestMapping("/api/v1/meta/concerns")
 public class ConcernQuestionController {
 
     private final ConcernQuestionService concernQuestionService;
 
     /** 고민 구체화 화면용: 1차 질문 + 상황별 2차 질문 전체 트리 */
     @GetMapping("/{concernType}/questions")
-    public ConcernQuestionTreeResponse getQuestions(@PathVariable ConcernType concernType) {
+    public List<ConcernQuestionTreeResponse> getQuestions(@PathVariable ConcernType concernType) {
         return concernQuestionService.getTree(concernType);
     }
 }
