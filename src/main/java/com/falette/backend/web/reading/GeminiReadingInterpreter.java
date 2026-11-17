@@ -60,7 +60,7 @@ public class GeminiReadingInterpreter implements ReadingInterpreter {
 
     public GeminiReadingInterpreter(ObjectMapper objectMapper,
                                     @Value("${gemini.api-key:}") String apiKey,
-                                    @Value("${gemini.model:gemini-flash-latest}") String model,
+                                    @Value("${gemini.model:gemini-flash-lite-latest}") String model,
                                     @Value("${gemini.base-url:https://generativelanguage.googleapis.com/v1beta}") String baseUrl,
                                     @Value("${gemini.timeout-seconds:20}") int timeoutSeconds) {
         this.objectMapper = objectMapper;
@@ -86,12 +86,7 @@ public class GeminiReadingInterpreter implements ReadingInterpreter {
                         "responseSchema", RESPONSE_SCHEMA,
                         "temperature", 0.9));
 
-        JsonNode response = restClient.post()
-                .uri("/models/{model}:generateContent", model)
-                .header("x-goog-api-key", apiKey)
-                .body(body)
-                .retrieve()
-                .body(JsonNode.class);
+        JsonNode response = call(body);
 
         JsonNode candidate = response == null ? null : response.path("candidates").path(0);
         String text = candidate == null ? "" : candidate.path("content").path("parts").path(0).path("text").asText("");
@@ -137,11 +132,11 @@ public class GeminiReadingInterpreter implements ReadingInterpreter {
 
             List<String> keywords = new ArrayList<>();
             for (JsonNode k : json.path("keywords")) {
-                String s = k.asText("").trim();
-                if (!s.isEmpty() && keywords.size() < 5) {
-                    keywords.add(s);
-                }
+                String s = k.asText("").replace(",", " ").trim();
+                if (!s.isEmpty()) keywords.add(s);
+                if (keywords.size() == 5) break;
             }
+
             if (summary.isBlank() || interpretation.isBlank() || keywords.isEmpty() || luckyItem.isBlank()) {
                 throw new IllegalStateException("Gemini 응답 필드 누락");
             }
