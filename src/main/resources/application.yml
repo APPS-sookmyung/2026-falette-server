@@ -28,3 +28,8 @@ app:
     - http://localhost:3000
   login-success-redirect-url: http://localhost:5173/
   login-failure-redirect-url: http://localhost:5173/?loginError=true
+
+gemini:
+  api-key: ${GEMINI_API_KEY:}
+  model: gemini-flash-lite-latest
+  timeout-seconds: 20

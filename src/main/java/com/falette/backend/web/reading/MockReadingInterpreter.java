@@ -13,9 +13,12 @@ import java.util.Map;
  * 이후 실제 LLM 연동 시 이 클래스를 교체한다.
  */
 @Component
-public class MockReadingInterpreter {
+public class MockReadingInterpreter implements ReadingInterpreter {
 
-    public record Result(String summary, String interpretation, List<String> keywords, String luckyItem) {
+    @Override
+    public Result generate(Input in) {
+        return generate(in.concernType(), in.color(), in.saturationLevel(), in.colorReason(),
+                in.card(), in.question2Text());
     }
 
     private static final Map<String, String> CONCERN = Map.of(
