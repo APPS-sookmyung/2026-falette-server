@@ -2,6 +2,7 @@ package com.falette.backend.common.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -38,6 +39,14 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     public ResponseEntity<ErrorResponse> handleMethodNotAllowed(HttpRequestMethodNotSupportedException e) {
         ErrorCode code = ErrorCode.METHOD_NOT_ALLOWED;
+        return ResponseEntity.status(code.getStatus()).body(ErrorResponse.of(code));
+    }
+
+    /** 요청 본문 형식이 JSON이 아님 (Content-Type 누락, text/plain 등) */
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    public ResponseEntity<ErrorResponse> handleUnsupportedMediaType(HttpMediaTypeNotSupportedException e) {
+        log.warn("Unsupported Content-Type: {}", e.getContentType());
+        ErrorCode code = ErrorCode.UNSUPPORTED_MEDIA_TYPE;
         return ResponseEntity.status(code.getStatus()).body(ErrorResponse.of(code));
     }
 

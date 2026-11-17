@@ -17,6 +17,7 @@ public enum ErrorCode {
     INVALID_CONCERN_OPTION(HttpStatus.BAD_REQUEST, "선택한 고민 옵션이 올바르지 않습니다."),
     NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 API입니다."),
     METHOD_NOT_ALLOWED(HttpStatus.METHOD_NOT_ALLOWED, "지원하지 않는 HTTP 메서드입니다."),
+    UNSUPPORTED_MEDIA_TYPE(HttpStatus.UNSUPPORTED_MEDIA_TYPE, "요청 Content-Type은 application/json이어야 합니다."),
     INTERNAL_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버 오류가 발생했습니다.");
 
     private final HttpStatus status;
