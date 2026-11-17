@@ -24,7 +24,7 @@ public class ReadingCommandService {
     private final ReadingRepository readingRepository;
     private final TarotCardRepository tarotCardRepository;
     private final ConcernQuestionOptionRepository optionRepository;
-    private final MockReadingInterpreter interpreter;
+    private final ReadingInterpreter interpreter;
 
     /** 리딩 생성: 입력 검증 → 목업 해석 생성 → 저장 → 상세 응답 */
     public ReadingDetailResponse create(ReadingCreateRequest request, User user) {
@@ -38,13 +38,15 @@ public class ReadingCommandService {
 
         validateOptions(request, option1, option2);
 
-        MockReadingInterpreter.Result result = interpreter.generate(
+        ReadingInterpreter.Result result = interpreter.generate(new ReadingInterpreter.Input(
                 request.concernType().name(),
                 request.color().name(),
+                request.brightnessLevel().name(),
                 request.saturationLevel().name(),
                 request.colorReason().name(),
                 card,
-                option2.getOptionText());
+                option1.getOptionText(),
+                option2.getOptionText()));
 
         Reading reading = Reading.create(
                 user,
