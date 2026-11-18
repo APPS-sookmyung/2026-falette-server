@@ -19,8 +19,11 @@ public class TarotCard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 100)
-    private String name;
+    @Column(name = "eng_name", nullable = false, length = 100)
+    private String engName;
+
+    @Column(name = "kor_name", nullable = false, length = 100)
+    private String korName;
 
     @Column(name = "image_url", nullable = false, length = 500)
     private String imageUrl;
@@ -34,14 +37,20 @@ public class TarotCard {
     @Column(length = 255)
     private String keywords;
 
-    public static TarotCard create(String name, String imageUrl, int positivityLevel,
+    public static TarotCard create(String engName, String korName, String imageUrl, int positivityLevel,
                                    String description, String keywords) {
         TarotCard card = new TarotCard();
-        card.name = name;
+        card.engName = engName;
+        card.korName = korName;
         card.imageUrl = imageUrl;
         card.positivityLevel = positivityLevel;
         card.description = description;
         card.keywords = keywords;
         return card;
+    }
+
+    /** 프롬프트·목업 문장용 표기: "The Sun (태양)" */
+    public String displayName() {
+        return engName + " (" + korName + ")";
     }
 }

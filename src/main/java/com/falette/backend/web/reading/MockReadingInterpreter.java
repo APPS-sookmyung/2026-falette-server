@@ -45,9 +45,9 @@ public class MockReadingInterpreter implements ReadingInterpreter {
             "INTUITIVE", "직관", "COMFORT", "안정", "ENERGY", "활력", "IDEAL", "이상", "PAST_MEMORY", "추억");
 
     private static final Map<String, String> SATURATION_LINE = Map.of(
-            "LEVEL_3", "선명한 색을 고른 만큼 지금 마음이 또렷하게 움직이고 있어요.",
+            "LEVEL_1", "선명한 색을 고른 만큼 지금 마음이 또렷하게 움직이고 있어요.",
             "LEVEL_2", "적당한 농도의 색처럼 마음도 균형을 찾아가는 중이에요.",
-            "LEVEL_1", "은은한 색을 고른 만큼 조용히 마음을 살피고 있어요.");
+            "LEVEL_3", "은은한 색을 고른 만큼 조용히 마음을 살피고 있어요.");
 
     private static final Map<Integer, String> TONE_SHORT = Map.of(
             5, "눈부신 흐름이 열려 있어요.",
@@ -88,7 +88,7 @@ public class MockReadingInterpreter implements ReadingInterpreter {
                         colorLabel,
                         REASON_STATE.getOrDefault(colorReason, "마음의 결을 따라가고 있어요"),
                         SATURATION_LINE.getOrDefault(saturationLevel, "")).trim(),
-                "%s 카드는 이렇게 말해요. %s".formatted(card.getName(), card.getDescription()),
+                "%s 카드는 이렇게 말해요. %s".formatted(card.displayName(), card.getDescription()),
                 TONE_BODY.get(level),
                 "'%s'라는 궁금증에 대해 카드는 이렇게 답해요. %s".formatted(question2Text, TONE_ANSWER.get(level)));
 
