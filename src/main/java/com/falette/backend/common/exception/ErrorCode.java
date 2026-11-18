@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 public enum ErrorCode {
 
     UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "로그인 세션 또는 X-Guest-UUID 헤더가 필요합니다."),
+    LOGIN_REQUIRED(HttpStatus.UNAUTHORIZED, "구글 로그인이 필요합니다."),
     INVALID_GUEST_UUID(HttpStatus.BAD_REQUEST, "X-Guest-UUID 형식이 올바르지 않습니다."),
     INVALID_PARAMETER(HttpStatus.BAD_REQUEST, "요청 값이 올바르지 않습니다."),
     READING_NOT_FOUND(HttpStatus.NOT_FOUND, "리딩 기록을 찾을 수 없습니다."),

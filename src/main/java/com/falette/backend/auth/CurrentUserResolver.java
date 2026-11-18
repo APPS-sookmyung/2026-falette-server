@@ -44,7 +44,8 @@ public class CurrentUserResolver {
         return Optional.of(guestUserService.findOrCreate(normalize(guestUuid)));
     }
 
-    private Optional<User> findLoginUser() {
+    /** 구글 로그인 세션의 사용자 (비회원 헤더는 보지 않음) */
+    public Optional<User> findLoginUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null && auth.getPrincipal() instanceof FaletteOAuth2User principal) {
             return userRepository.findById(principal.getUserId());
@@ -53,7 +54,7 @@ public class CurrentUserResolver {
     }
 
     /** UUID 형식 검사 + 소문자로 통일 */
-    private String normalize(String raw) {
+    public static String normalize(String raw) {
         try {
             return UUID.fromString(raw.trim()).toString();
         } catch (IllegalArgumentException e) {
