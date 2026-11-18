@@ -100,7 +100,7 @@ public class GeminiReadingInterpreter implements ReadingInterpreter {
     private String userPrompt(Input in) {
         return """
                 고민 유형: %s
-                고른 색: %s (명도 단계 %s, 채도 단계 %s, 숫자가 클수록 밝고 선명함)
+                고른 색: %s (명도 단계 %s: 1이 가장 밝고 3이 가장 어두움, 채도 단계 %s: 1이 가장 선명하고 3이 가장 탁함)
                 색을 고른 이유: %s
                 현재 상황: %s
                 궁금한 것: %s
@@ -114,7 +114,7 @@ public class GeminiReadingInterpreter implements ReadingInterpreter {
                 levelNumber(in.brightnessLevel()), levelNumber(in.saturationLevel()),
                 REASON.getOrDefault(in.colorReason(), in.colorReason()),
                 in.question1Text(), in.question2Text(),
-                in.card().getName(), in.card().getKeywords(), in.card().getDescription(),
+                in.card().displayName(), in.card().getKeywords(), in.card().getDescription(),
                 in.card().getPositivityLevel());
     }
 

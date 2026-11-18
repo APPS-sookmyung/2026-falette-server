@@ -42,36 +42,35 @@ public class DataInitializer implements CommandLineRunner {
         if (tarotCardRepository.count() > 0) {
             return;
         }
-        // positivityLevel 매핑은 초안이며 팀 확정 필요. 이미지 경로와 한줄 설명도 임시값.
-        card("The Sun (태양)", "the-sun", 5, "환한 빛이 비추듯 모든 일이 밝게 풀려가는 시기예요.", "밝음,생명력");
-        card("The Star (별)", "the-star", 5, "어둠 속에서도 희망의 빛이 길을 안내해 주고 있어요.", "희망,영감");
-        card("The World (세계)", "the-world", 5, "한 단계를 훌륭히 마무리하고 완성에 다다랐어요.", "완성,통합");
-        card("Judgement (심판)", "judgement", 5, "지난 시간을 정리하고 새롭게 깨어나는 순간이에요.", "각성,재탄생");
+        card("The Sun", "태양", "the-sun", 5, "환한 빛이 비추듯 모든 일이 밝게 풀려가는 시기예요.", "밝음,생명력");
+        card("The Star", "별", "the-star", 5, "어둠 속에서도 희망의 빛이 길을 안내해 주고 있어요.", "희망,영감");
+        card("The World", "세계", "the-world", 5, "한 단계를 훌륭히 마무리하고 완성에 다다랐어요.", "완성,통합");
+        card("Judgement", "심판", "judgement", 5, "지난 시간을 정리하고 새롭게 깨어나는 순간이에요.", "각성,재탄생");
 
-        card("The Empress (여황제)", "the-empress", 4, "풍요와 따뜻함이 자라나는 넉넉한 시기예요.", "풍요,자연");
-        card("The Lovers (연인)", "the-lovers", 4, "마음이 통하는 조화로운 인연과 선택의 순간이에요.", "사랑,조화");
-        card("Strength (힘)", "strength", 4, "부드러운 용기가 가장 큰 힘이 되어주는 때예요.", "용기,내적 힘");
-        card("The Fool (광대)", "the-fool", 4, "가벼운 마음으로 새로운 첫걸음을 내딛기 좋은 때예요.", "자유,새로운 시작");
+        card("The Empress", "여황제", "the-empress", 4, "풍요와 따뜻함이 자라나는 넉넉한 시기예요.", "풍요,자연");
+        card("The Lovers", "연인", "the-lovers", 4, "마음이 통하는 조화로운 인연과 선택의 순간이에요.", "사랑,조화");
+        card("Strength", "힘", "strength", 4, "부드러운 용기가 가장 큰 힘이 되어주는 때예요.", "용기,내적 힘");
+        card("The Fool", "광대", "the-fool", 4, "가벼운 마음으로 새로운 첫걸음을 내딛기 좋은 때예요.", "자유,새로운 시작");
 
-        card("Wheel of Fortune (운명의 수레바퀴)", "wheel-of-fortune", 3, "운의 흐름이 돌고 있어요, 변화의 순환에 올라타 보세요.", "순환,변화");
-        card("Temperance (절제)", "temperance", 3, "서로 다른 것들이 어우러지는 조화의 시기예요.", "조화,균형");
-        card("Justice (정의)", "justice", 3, "균형 잡힌 시선으로 바라보면 진실이 보여요.", "균형,진실");
-        card("The Chariot (전차)", "the-chariot", 3, "굳은 의지로 방향을 잡으면 앞으로 나아갈 수 있어요.", "의지,돌파");
+        card("Wheel of Fortune", "운명의 수레바퀴", "wheel-of-fortune", 3, "운의 흐름이 돌고 있어요, 변화의 순환에 올라타 보세요.", "순환,변화");
+        card("Temperance", "절제", "temperance", 3, "서로 다른 것들이 어우러지는 조화의 시기예요.", "조화,균형");
+        card("Justice", "정의", "justice", 3, "균형 잡힌 시선으로 바라보면 진실이 보여요.", "균형,진실");
+        card("The Chariot", "전차", "the-chariot", 3, "굳은 의지로 방향을 잡으면 앞으로 나아갈 수 있어요.", "의지,돌파");
 
-        card("The Moon (달)", "the-moon", 2, "아직 보이지 않는 마음과 직관에 귀 기울여 보세요.", "신비,무의식");
-        card("The Emperor (황제)", "the-emperor", 2, "흔들림 없는 기준과 책임감으로 중심을 잡아야 해요.", "권력,안정");
-        card("The High Priestess (여사제)", "the-high-priestess", 2, "말하지 않은 진실을 직관으로 읽어내야 하는 때예요.", "직관,비밀");
-        card("The Hanged Man (매달린 남자)", "the-hanged-man", 2, "잠시 멈추고 다른 각도에서 바라보면 답이 보여요.", "정지,새로운 시각");
+        card("The Moon", "달", "the-moon", 2, "아직 보이지 않는 마음과 직관에 귀 기울여 보세요.", "신비,무의식");
+        card("The Emperor", "황제", "the-emperor", 2, "흔들림 없는 기준과 책임감으로 중심을 잡아야 해요.", "권력,안정");
+        card("The High Priestess", "여사제", "the-high-priestess", 2, "말하지 않은 진실을 직관으로 읽어내야 하는 때예요.", "직관,비밀");
+        card("The Hanged Man", "매달린 남자", "the-hanged-man", 2, "잠시 멈추고 다른 각도에서 바라보면 답이 보여요.", "정지,새로운 시각");
 
-        card("The Devil (악마)", "the-devil", 1, "나를 붙잡고 있는 집착을 알아차리면 자유로워질 수 있어요.", "욕망,속박");
-        card("Death (죽음)", "death", 1, "하나의 끝이 새로운 시작으로 이어지는 변화의 문이에요.", "변화,끝과 시작");
-        card("The Tower (탑)", "the-tower", 1, "갑작스러운 변화가 낡은 것을 정리하고 새 길을 열어줘요.", "파괴,급변");
-        card("The Hermit (은둔자)", "the-hermit", 1, "잠시 멈추고 내면의 등불을 따라가 보는 시간이에요.", "고독,내면 탐구");
+        card("The Devil", "악마", "the-devil", 1, "나를 붙잡고 있는 집착을 알아차리면 자유로워질 수 있어요.", "욕망,속박");
+        card("Death", "죽음", "death", 1, "하나의 끝이 새로운 시작으로 이어지는 변화의 문이에요.", "변화,끝과 시작");
+        card("The Tower", "탑", "the-tower", 1, "갑작스러운 변화가 낡은 것을 정리하고 새 길을 열어줘요.", "파괴,급변");
+        card("The Hermit", "은둔자", "the-hermit", 1, "잠시 멈추고 내면의 등불을 따라가 보는 시간이에요.", "고독,내면 탐구");
     }
 
-    private void card(String name, String slug, int level, String description, String keywords) {
+    private void card(String engName, String korName, String slug, int level, String description, String keywords) {
         tarotCardRepository.save(
-                TarotCard.create(name, "/images/tarot/" + slug + ".png", level, description, keywords));
+                TarotCard.create(engName, korName, "/images/tarot/" + slug + ".png", level, description, keywords));
     }
 
     // ---------------------------------------------------------------- 로딩 멘트
